@@ -1,0 +1,3 @@
+[submodule "knotkit"]
+	path = knotkit
+	url = https://github.com/cseed/knotkit
