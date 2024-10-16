@@ -9,7 +9,7 @@ public:
 
     void display_differential();
 
-    void display_differential_component(int h, int q, int delta_q = 0);
+    void display_differential_component(int h, int q);
 
 private:
     knot_diagram kd_;
@@ -38,10 +38,10 @@ void Differentials<R>::display_differential() {
 }
 
 template<class R>
-void Differentials<R>::display_differential_component(int h, int q, int delta_q) {
+void Differentials<R>::display_differential_component(int h, int q) {
     // Extract the graded pieces
     grading from_grading(h, q);
-    grading to_grading(h - 1, q + delta_q);
+    grading to_grading(h - 1, q);
 
     // Get the submodules at the specified gradings
     auto C_from = C_->graded_piece(from_grading);
@@ -57,7 +57,7 @@ void Differentials<R>::display_differential_component(int h, int q, int delta_q)
 
     // Display the restricted differential
     std::cout << "Differential from grading (" << h << ", " << q << ") "
-              << "to (" << h - 1 << ", " << q + delta_q << "):\n";
+              << "to (" << h - 1 << ", " << q << "):\n";
 
     // Represent the differential as a matrix
     unsigned m = C_from->dim();
